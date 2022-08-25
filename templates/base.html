@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport">
-    <title>Document</title>
-</head>
+<html lang="ko">
+{% include 'head.html' %}
 <body>
-    Hello World!
+    {% include 'header.html' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'footer.html' %}
 </body>
 </html>

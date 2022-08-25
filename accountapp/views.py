@@ -5,6 +5,11 @@ from django.shortcuts import render
 
 
 def hello_world(request):
-    # return HttpResponse('Hello World!')
-    return render(request, "accountapp/hello_world.html")
+
+    if request.method == "POST":
+        return render(request, "accountapp/hello_world.html", context={'text': 'POST METHOD!!!'})
+    else:
+        return render(request, "accountapp/hello_world.html", context={'text': 'GET METHOD!!!'})
+        # return HttpResponse('Hello World!')
+
 

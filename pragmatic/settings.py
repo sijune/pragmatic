@@ -128,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# DEBUG가 True일때는 runserver만으로도 브라우저에서 자동으로 static 파일들을 모아주지만
+# 운영배포 시에 runserver로 static file을 모으는 것이 아니므로, 모든 Static 파일을 하나로 모으는 작업이 필요하다.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [

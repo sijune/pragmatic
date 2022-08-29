@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'accountapp', # 명시를 해줘야 한다.
     'profileapp',
+    'articleapp',
 
 ]
 

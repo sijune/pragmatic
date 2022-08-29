@@ -20,7 +20,7 @@ class ArticleCreateView(CreateView):
 
     def form_valid(self, form):
         temp_article = form.save(commit=False)
-        temp_article.writer = self.request.useer
+        temp_article.writer = self.request.user
         temp_article.save()
         return super().form_valid(form)
 

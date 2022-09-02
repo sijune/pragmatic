@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
+<div>
     <div style="text-align: center; max-width:500px; margin: 4rem auto;">
         <p>
           {{ target_user.date_joined }}
@@ -11,12 +11,14 @@
 
         {% if target_user.profile %}
 
-            <img src="{{ target_user.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem;">
+            <img src="{{ target_user.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit: cover;">
 
             <h2 class="bold">
                 {{target_user.profile.nickname}}
                 {% if target_user == user %}
-                    <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
+                    <a class="material-icons"
+                       style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;"
+                       href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
                         edit
                     </a>
                 {% endif %}
@@ -39,17 +41,28 @@
 
 
         {% if target_user == user %}
-        <a href="{% url 'accountapp:update' pk=user.pk %}">
-            <p>
-                Change Info
-            </p>
+        <a class="material-icons"
+           style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .7rem;"
+           href="{% url 'accountapp:update' pk=user.pk %}">
+
+                update
+
         </a>
-        <a href="{% url 'accountapp:delete' pk=user.pk %}">
-            <p>
-                Quit
-            </p>
+        <a class="material-icons"
+           style="box-shadow: 0 0 4px #fcc; border-radius: 10rem; padding: .7rem;"
+           href="{% url 'accountapp:delete' pk=user.pk %}">
+
+                cancel
+
         </a>
         {% endif %}
     </div>
+
+    <div>
+
+        {% include 'snippets/list_fragment.html' with article_list=object_list %}
+
+    </div>
+</div>
 
 {% endblock %}
